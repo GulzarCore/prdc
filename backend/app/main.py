@@ -141,3 +141,15 @@ def delete_task(task_id: int):
 
     if cursor.rowcount == 0:
         raise HTTPException(status_code=404, detail="Task not found")
+
+
+
+
+
+
+
+
+
+@app.get("/api/version")
+def version():
+    return {"app": "devops-lab", "version": "1.0.0"}

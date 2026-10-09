@@ -21,3 +21,12 @@ class TaskValidationTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+from app.main import version
+
+# Add this method inside TaskValidationTests:
+def test_version(self):
+    self.assertEqual(
+        version(),
+        {"app": "devops-lab", "version": "1.0.0"},
+    )
