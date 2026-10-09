@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DevOps Lab Task Tracker</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script src="/assets/app.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <h1>DevOps Lab</h1>
+    <p class="subtitle">Three-tier application · Task tracker</p>
+
+    <form id="task-form">
+      <label for="task-title">New task</label>
+      <div class="input-row">
+        <input id="task-title" maxlength="200"
+               placeholder="Enter a task..." required>
+        <button type="submit">Add task</button>
+      </div>
+    </form>
+
+    <p id="message" role="status"></p>
+    <ul id="task-list"></ul>
+    <p id="health">Checking API status...</p>
+  </main>
+</body>
+</html>
