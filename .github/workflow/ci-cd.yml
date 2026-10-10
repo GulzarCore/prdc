@@ -13,6 +13,7 @@ permissions:
 env:
   PYTHON_VERSION: "3.12"
 
+
 jobs:
   validate:
     name: Test and validate
