@@ -41,7 +41,7 @@ jobs:
           ./scripts/check.sh
 
       - name: Audit Python dependencies
-        run: python -m pip_audit -r requirements.txt
+        run: .venv/bin/python -m pip_audit -r requirements.txt
 
   repository-security:
     name: Scan repository
