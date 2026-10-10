@@ -104,7 +104,7 @@ jobs:
         uses: aquasecurity/trivy-action@0.36.0
         with:
           scan-type: image
-        image-ref: ${{ env.IMAGE_PREFIX }}-frontend:${{ github.sha }}          scanners: vuln
+          image-ref: ${{ env.IMAGE_PREFIX }}-frontend:${{ github.sha }}          scanners: vuln
           severity: HIGH,CRITICAL
           exit-code: "1"
           ignore-unfixed: true
