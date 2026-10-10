@@ -93,7 +93,7 @@ jobs:
         with:
           context: frontend
           file: frontend/Dockerfile
-          load: true
+          push: true
           tags: ${{ env.IMAGE_PREFIX }}-frontend:${{ github.sha }}
           cache-from: type=gha,scope=frontend
           cache-to: type=gha,scope=frontend,mode=max
@@ -103,7 +103,7 @@ jobs:
         with:
           context: .
           file: backend/Dockerfile
-          load: true
+          : true
           tags: ${{ env.IMAGE_PREFIX }}-backend:${{ github.sha }}
           cache-from: type=gha,scope=backend
           cache-to: type=gha,scope=backend,mode=max
@@ -135,6 +135,11 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Verify Docker images
+        run: |
+          docker image inspect "$IMAGE_PREFIX-frontend:$GITHUB_SHA"
+          docker image inspect "$IMAGE_PREFIX-backend:$GITHUB_SHA"
 
       - name: Publish frontend image
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
