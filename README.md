@@ -54,4 +54,4 @@ Open http://127.0.0.1:8000.
 2. Docker and Compose
 3. CI/CD
 4. Kubernetes
-5. Monitoring and security
+5. Monitoring and security# prdc
