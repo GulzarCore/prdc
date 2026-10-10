@@ -1,5 +1,12 @@
 FROM nginxinc/nginx-unprivileged:alpine
 
+# Upgrade Alpine packages to patched versions
+USER root
+RUN apk upgrade --no-cache
+
+# Return to the non-root user used by the base image
+USER 101
+
 COPY index.html /usr/share/nginx/html/index.html
 COPY style.css app.js /usr/share/nginx/html/assets/
 COPY nginx.conf /etc/nginx/conf.d/default.conf
