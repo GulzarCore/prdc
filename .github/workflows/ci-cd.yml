@@ -94,7 +94,7 @@ jobs:
           context: frontend
           file: frontend/Dockerfile
           load: true
-          tags: ghcr.io/${{ github.repository_owner }}/prdc-frontend:${{ github.sha }}
+          tags: ${{ env.IMAGE_PREFIX }}-frontend:${{ github.sha }}
           cache-from: type=gha,scope=frontend
           cache-to: type=gha,scope=frontend,mode=max
 
@@ -104,7 +104,7 @@ jobs:
           context: .
           file: backend/Dockerfile
           load: true
-          tags: ghcr.io/${{ github.repository_owner }}/prdc-backend:${{ github.sha }}
+          tags: ${{ env.IMAGE_PREFIX }}-backend:${{ github.sha }}
           cache-from: type=gha,scope=backend
           cache-to: type=gha,scope=backend,mode=max
 
@@ -112,8 +112,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: image
-          image-ref: ghcr.io/${{ github.repository }}-frontend:${{ github.sha }}
-          scanners: vuln
+          image-ref: ${{ env.IMAGE_PREFIX }}-frontend:${{ github.sha }}          scanners: vuln
           severity: HIGH,CRITICAL
           exit-code: "1"
           ignore-unfixed: true
@@ -122,8 +121,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: image
-          image-ref: ghcr.io/${{ github.repository }}-backend:${{ github.sha }}
-          scanners: vuln
+          image-ref: ${{ env.IMAGE_PREFIX }}-backend:${{ github.sha }}          scanners: vuln
           severity: HIGH,CRITICAL
           exit-code: "1"
           ignore-unfixed: true
